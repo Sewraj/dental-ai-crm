@@ -20,12 +20,18 @@ import { ModeToggle } from "@/components/layout/mode-toggle";
 
 const pageTitles: Record<string, string> = {
   "/dashboard": "dashboard",
+  "/appointments": "appointments",
+  "/calendar": "calendar",
+  "/treatments": "treatments",
+  "/agents": "aiAgents",
   "/inbox": "inbox",
   "/notifications": "notifications",
   "/contacts": "contacts",
   "/pipelines": "pipelines",
   "/broadcasts": "broadcasts",
   "/automations": "automations",
+  "/website-management": "websiteManagement",
+  "/clinic-settings": "clinicSettings",
   "/settings": "settings",
 };
 

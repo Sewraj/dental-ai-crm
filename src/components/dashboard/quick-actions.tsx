@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { UserPlus, Briefcase, Radio, Zap } from 'lucide-react'
+import { Users, MessageSquare, Bot, Zap } from 'lucide-react'
 import type { ComponentType } from 'react'
 
 import { useTranslations } from 'next-intl'
@@ -18,14 +18,14 @@ interface Action {
 }
 
 const ACTIONS: Action[] = [
-  { labelKey: 'newContact', href: '/contacts', icon: UserPlus, tint: 'text-primary' },
-  { labelKey: 'newDeal', href: '/pipelines', icon: Briefcase, tint: 'text-blue-400' },
-  { labelKey: 'newBroadcast', href: '/broadcasts/new', icon: Radio, tint: 'text-amber-400' },
-  { labelKey: 'newAutomation', href: '/automations/new', icon: Zap, tint: 'text-primary' },
+  { labelKey: 'patients', href: '/contacts', icon: Users, tint: 'text-primary' },
+  { labelKey: 'inbox', href: '/inbox', icon: MessageSquare, tint: 'text-primary' },
+  { labelKey: 'ai', href: '/agents', icon: Bot, tint: 'text-primary' },
+  { labelKey: 'automations', href: '/automations', icon: Zap, tint: 'text-primary' },
 ]
 
 export function QuickActions() {
-  const t = useTranslations('Dashboard.quickActions')
+  const t = useTranslations('DentalFoundation.actions')
   
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">

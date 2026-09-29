@@ -15,17 +15,17 @@
     "createAccount": "Criar conta"
   },
   "Sidebar": {
-    "title": "Modelo de CRM para WhatsApp",
+    "title": "Dental AI CRM",
     "primaryNav": "Principal",
     "dashboard": "Painel",
-    "inbox": "Caixa de entrada",
+    "inbox": "WhatsApp Inbox",
     "notifications": "Notificações",
-    "contacts": "Contatos",
+    "contacts": "Patients",
     "pipelines": "Pipelines",
     "broadcasts": "Disparos",
     "automations": "Automações",
     "flows": "Fluxos",
-    "aiAgents": "Agentes de IA",
+    "aiAgents": "AI Receptionist",
     "settings": "Configurações",
     "beta": "Beta",
     "unreadConversations": "{count} {count, plural, =1 {conversa não lida} other {conversas não lidas}}",
@@ -39,13 +39,18 @@
     "defaultAvatar": "Avatar",
     "menuProfile": "Perfil",
     "menuSettings": "Configurações",
-    "menuSignOut": "Sair"
+    "menuSignOut": "Sair",
+    "appointments": "Appointments",
+    "calendar": "Calendar",
+    "treatments": "Treatments",
+    "websiteManagement": "Website Management",
+    "clinicSettings": "Clinic Settings"
   },
   "Header": {
     "dashboard": "Painel",
-    "inbox": "Caixa de entrada",
+    "inbox": "WhatsApp Inbox",
     "notifications": "Notificações",
-    "contacts": "Contatos",
+    "contacts": "Patients",
     "pipelines": "Pipelines",
     "broadcasts": "Disparos",
     "automations": "Automações",
@@ -56,7 +61,13 @@
     "defaultAvatar": "Avatar",
     "menuProfile": "Perfil",
     "menuSettings": "Configurações",
-    "menuSignOut": "Sair"
+    "menuSignOut": "Sair",
+    "aiAgents": "AI Receptionist",
+    "appointments": "Appointments",
+    "calendar": "Calendar",
+    "treatments": "Treatments",
+    "websiteManagement": "Website Management",
+    "clinicSettings": "Clinic Settings"
   },
   "ModeToggle": {
     "switchMode": "Mudar para o modo {mode}"
@@ -1893,7 +1904,7 @@
     "titleJoin": "Criar conta e entrar na equipe",
     "title": "Criar conta",
     "descJoin": "Confirme seu e-mail e depois aceite o convite para entrar na sua equipe.",
-    "desc": "Comece a usar o Modelo de CRM para WhatsApp",
+    "desc": "Get started with Dental AI CRM",
     "fullNameLabel": "Nome completo",
     "fullNamePlaceholder": "João Silva",
     "emailLabel": "E-mail",
@@ -1963,7 +1974,7 @@
     "unread": "Não lidas"
   },
   "Agents": {
-    "title": "Agentes de IA",
+    "title": "AI Receptionist",
     "description": "Seu agente de IA com chave própria — configure-o e teste no playground antes que ele responda aos clientes na caixa de entrada.",
     "tabPlayground": "Playground",
     "tabSetup": "Configuração",
@@ -2026,5 +2037,60 @@
   },
   "DashboardShell": {
     "loading": "Carregando..."
+  },
+  "DentalFoundation": {
+    "description": "Clinic overview for Dr. V. Dhooboreea.",
+    "today": "Today's Appointments",
+    "patients": "Total Patients",
+    "upcoming": "Upcoming Appointments",
+    "messages": "WhatsApp Messages",
+    "unavailable": "Not connected",
+    "appointmentsHint": "Appointment data will be connected in a later phase.",
+    "patientsHint": "Patient totals are not connected yet. Existing contacts remain available under Patients.",
+    "messagesHint": "Message totals are not connected to this overview. Existing conversations remain available in WhatsApp Inbox.",
+    "overviewTitle": "Your dental clinic workspace",
+    "overviewBody": "Use Patients to access existing contacts, WhatsApp Inbox for conversations, and AI Receptionist for the existing AI tools. Appointment scheduling, calendar availability and treatment records are not available yet.",
+    "planned": "Coming in a later phase",
+    "back": "Back to Dashboard",
+    "appointments": {
+      "title": "Appointments",
+      "description": "Appointment scheduling is not available yet. No bookings or appointment records are created here."
+    },
+    "calendar": {
+      "title": "Calendar",
+      "description": "The clinic calendar is not available yet. No availability or scheduling logic is connected."
+    },
+    "treatments": {
+      "title": "Treatments",
+      "description": "Treatment records are not available yet. No clinical data is collected here."
+    },
+    "actions": {
+      "patients": "View Patients",
+      "inbox": "Open WhatsApp Inbox",
+      "ai": "Open AI Receptionist",
+      "automations": "View Automations"
+    },
+    "websiteManagement": {
+      "title": "Website Management",
+      "description": "In a later phase, this module will provide centralised management of appropriate public website information and integrate with the existing dental website and admin functionality. Website integration is not available yet."
+    },
+    "clinicSettings": {
+      "title": "Clinic Settings",
+      "description": "Foundations for managing the clinic. These sections describe planned capabilities only; nothing can be edited, saved or sent here.",
+      "informationTitle": "Clinic Information",
+      "informationBody": "Clinic details and public contact information will be managed here in a later phase.",
+      "hoursTitle": "Regular Opening Hours",
+      "hoursBody": "Regular weekly opening hours will be configured here in a later phase. No opening hours or appointment availability are configured on this page.",
+      "exceptionsTitle": "Schedule Exceptions / Exceptional Closures",
+      "exceptionsBody": "Planned functionality for a later phase:",
+      "close": "Mark a specific date or period as closed or unavailable.",
+      "override": "Override normal clinic opening hours for that date or period.",
+      "availability": "Prevent the future availability engine from offering appointments during the closure.",
+      "affected": "Identify existing appointments affected by the closure.",
+      "notify": "Allow authorised clinic staff to notify affected patients after preview and confirmation.",
+      "reschedule": "Support later rescheduling of affected appointments.",
+      "staffTitle": "Staff & Permissions",
+      "staffBody": "Clinic-specific staff responsibilities and permissions will be organised here in a later phase. Existing account membership and permissions continue to be managed in Settings."
+    }
   }
 }
