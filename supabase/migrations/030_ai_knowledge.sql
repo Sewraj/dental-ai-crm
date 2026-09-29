@@ -15,11 +15,11 @@
 --     (Anthropic has no embeddings API) keep the lexical path with
 --     zero extra setup.
 --
--- pgvector: `CREATE EXTENSION IF NOT EXISTS vector` works on a stock
--- Postgres. On hosted Supabase the extension usually lives in the
--- `extensions` schema — if your project pins that, run
--- `create extension if not exists vector with schema extensions;`
--- once, then this file is a no-op for the extension.
+-- pgvector lives in Supabase's `extensions` schema.
+-- Install it there when absent and qualify its types, operators,
+-- and operator class so migration and function search paths do not
+-- need to include `extensions`. An existing installation must also
+-- be in `extensions`; IF NOT EXISTS does not relocate it.
 --
 -- RLS: settings-class, mirroring `ai_configs` / `whatsapp_config` —
 -- any member may read the knowledge base; only admin+ may change it.
@@ -30,7 +30,7 @@
 -- Idempotent — safe to run multiple times.
 -- ============================================================
 
-CREATE EXTENSION IF NOT EXISTS vector;
+CREATE EXTENSION IF NOT EXISTS vector WITH SCHEMA extensions;
 
 -- Optional embeddings key (OpenAI-compatible). When set, the KB is
 -- embedded and semantic search turns on. Stored AES-256-GCM-encrypted,
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS ai_knowledge_chunks (
   -- follow-up; accounts wanting paraphrase/morphology matching add an
   -- embeddings key for the semantic path.)
   fts          tsvector GENERATED ALWAYS AS (to_tsvector('simple', content)) STORED,
-  embedding    vector(1536),
+  embedding    extensions.vector(1536),
   created_at   timestamptz NOT NULL DEFAULT now()
 );
 
@@ -123,7 +123,7 @@ CREATE INDEX IF NOT EXISTS ai_knowledge_chunks_fts_idx
 -- is poor until it's large and REINDEXed. HNSW needs no training and is
 -- accurate from the first row.
 CREATE INDEX IF NOT EXISTS ai_knowledge_chunks_embedding_idx
-  ON ai_knowledge_chunks USING hnsw (embedding vector_cosine_ops);
+  ON ai_knowledge_chunks USING hnsw (embedding extensions.vector_cosine_ops);
 
 ALTER TABLE ai_knowledge_chunks ENABLE ROW LEVEL SECURITY;
 
@@ -184,11 +184,11 @@ CREATE OR REPLACE FUNCTION public.match_ai_knowledge_semantic(
 RETURNS TABLE (id uuid, content text, distance real) AS $$
   SELECT c.id,
          c.content,
-         (c.embedding <=> p_query_embedding::vector(1536)) AS distance
+         (c.embedding OPERATOR(extensions.<=>) p_query_embedding::extensions.vector(1536)) AS distance
   FROM ai_knowledge_chunks c
   WHERE c.account_id = p_account_id
     AND c.embedding IS NOT NULL
-  ORDER BY c.embedding <=> p_query_embedding::vector(1536)
+  ORDER BY c.embedding OPERATOR(extensions.<=>) p_query_embedding::extensions.vector(1536)
   LIMIT GREATEST(p_match_count, 0);
 $$ LANGUAGE sql STABLE SECURITY DEFINER SET search_path = public;
 
